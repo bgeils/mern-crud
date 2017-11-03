@@ -61,6 +61,8 @@ docker-compose up
 
 ### Heroku 
 ```bash
+cd react-src
+npm run build
 git push heroku master
 heroku ps:scale web=1
 heroku open

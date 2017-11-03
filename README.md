@@ -52,21 +52,27 @@ npm run build
 
 It re-creates a folder named *public* on the root directory. This is where the production-ready front-end of the web application resides.
 
-## Docker
+## Deploying
+
+### Docker
 ```bash
 docker-compose up
 ```
-<br>
 
-## Heroku 
+### Heroku 
 ```bash
 git push heroku master
 heroku ps:scale web=1
 heroku open
 ```
-
+<br>
 
 ## To Do
 
-- [ ] Write the to do list
+- [ ] Account Login - Sign In, Sign Out, Forgot Password (FB login would be nice too)
+- [ ] Real time monitoring - Current energy utilization (some sweet graphics)
+- [ ] Account Page - Page to change your password and other information
+- [ ] Download Data - Ability to download data on your usage to optimize on your own
+- [ ] API exposure - And subsequent documentation (This may be better in flask?)
+
 

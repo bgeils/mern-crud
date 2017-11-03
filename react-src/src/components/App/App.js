@@ -39,6 +39,11 @@ class App extends Component {
     this.socket.on('delete', data => this.handleUserDeleted(data));
   }
 
+  // disconnect the socket when the app unmounts
+  componentWillUnmount() {
+    this.socket.disconnect()
+  }
+
   // Fetch data from the back-end
   fetchUsers() {
     axios.get(`${this.server}/api/users/`)
@@ -76,6 +81,7 @@ class App extends Component {
     this.setState({ users: users });
   }
 
+
   render() {
 
     let online = this.state.online;
@@ -84,6 +90,7 @@ class App extends Component {
 
     return (
       <div>
+
         <div className='App'>
           <div className='App-header'>
             <img src={logo} className='App-logo' alt='logo' />
@@ -123,5 +130,7 @@ class App extends Component {
     );
   }
 }
+
+
 
 export default App;

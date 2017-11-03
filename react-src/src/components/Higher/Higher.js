@@ -7,6 +7,7 @@ import {
 
 import App from '../App/App';
 import Home from '../Home/Home';
+import Billing from '../Billing/Billing';
 
 class Higher extends Component {
 
@@ -29,6 +30,7 @@ class Higher extends Component {
 
             <Route exact path="/" component={Home}/>
             <Route exact path="/test" component={App}/>
+            <Route exact path="/billing" component={Billing}/>
 
           </div>
         </Router>

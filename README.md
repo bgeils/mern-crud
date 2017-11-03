@@ -70,9 +70,13 @@ heroku open
 ## To Do
 
 - [ ] Account Login - Sign In, Sign Out, Forgot Password (FB login would be nice too)
+- [ ] Energy Marketplace - Ability to buy and sell energy
 - [ ] Real time monitoring - Current energy utilization (some sweet graphics)
 - [ ] Account Page - Page to change your password and other information
 - [ ] Download Data - Ability to download data on your usage to optimize on your own
 - [ ] API exposure - And subsequent documentation (This may be better in flask?)
 
+### Resources
+
+Energy: [https://energy.gov/data/articles/who-uses-open-data](https://energy.gov/data/articles/who-uses-open-data)
 

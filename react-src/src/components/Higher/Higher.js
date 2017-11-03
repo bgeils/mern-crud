@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom'
 
 import App from '../App/App';
-
+import Home from '../Home/Home';
 
 class Higher extends Component {
 
@@ -18,13 +18,18 @@ class Higher extends Component {
           <div>
             <ul>
               <li><Link to="/">Home</Link></li>
+              <li><Link to="/account">Account</Link></li>
               <li><Link to="/about">About</Link></li>
-              <li><Link to="/topics">Topics</Link></li>
+              <li><Link to="/market">Market Place</Link></li>
+              <li><Link to="/billing">Billing</Link></li>
+              <li><Link to="/test">Test</Link></li>
             </ul>
 
             <hr/>
 
-            <Route exact path="/" component={App}/>
+            <Route exact path="/" component={Home}/>
+            <Route exact path="/test" component={App}/>
+
           </div>
         </Router>
       </div>

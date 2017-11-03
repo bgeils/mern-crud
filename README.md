@@ -42,7 +42,7 @@ npm install
 
 Run the *development server* for React. It listens on port 4200.
 ```bash
-REACT_APP_API_URL=http://localhost:3000 npm start
+npm run dev
 ```
 
 To make a production build, simply run on *react-src* folder via the terminal.

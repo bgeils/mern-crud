@@ -1,4 +1,4 @@
-Collection: consumption
+Collection: consum
 
 ```json
 {
@@ -9,7 +9,7 @@ Collection: consumption
 }
 ```
 
-Colleciton: production
+Collection: prod
 
 ```json
 {

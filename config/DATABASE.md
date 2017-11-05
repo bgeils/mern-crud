@@ -1,19 +1,19 @@
-Collection: consumption
+Collection: consum
 
 ```json
 {
-	"deviceid": device id,
+	"device_id": device id,
 	"start_time": timestamp_utc,
 	"duration": duration in seconds,
 	"energy": energy in watt-hours
 }
 ```
 
-Colleciton: production
+Collection: prod
 
 ```json
 {
-	"deviceid": device id,
+	"device_id": device id,
 	"start_time": timestamp_utc,
 	"duration": duration in seconds,
 	"energy": energy in watt-hours

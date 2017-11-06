@@ -6,6 +6,7 @@ import io from 'socket.io-client';
 import TableUser from '../TableUser/TableUser';
 import ModalUser from '../ModalUser/ModalUser';
 
+
 import logo from '../../media/logo.png';
 import './App.css';
 
@@ -55,6 +56,7 @@ class App extends Component {
   }
 
   handleUserAdded(user) {
+    console.log(user)
     let users = this.state.users.slice();
     users.push(user);
     this.setState({ users: users });
@@ -122,6 +124,7 @@ class App extends Component {
           />
         </Container>
         <br/>
+        
       </div>
     );
   }

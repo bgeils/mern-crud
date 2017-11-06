@@ -28,3 +28,21 @@ Collection: accounts
 	"devices": [ array of device ids ]
 }
 ```
+
+Collection: sellOrders
+```json
+{
+	"status": status of order // Pending, Active, Suspended, Closed,
+	"amount": energy in watt-hours,
+	"price": price in USD
+}
+```
+
+Collection: buyOrders
+```json
+{
+	"status": status of order // Pending, Active, Suspended, Closed,
+	"amount": energy in watt-hours,
+	"price": price in USD
+}
+```

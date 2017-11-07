@@ -6,7 +6,7 @@ const ConsumedEnergy = require('../models/consum');
 
 // READ (ALL)
 router.get('/', (req, res) => {
-  ConsumedEnergy.find({})
+  ConsumedEnergy.find({}).sort({'start_time': -1}).limit(30)
     .then((result) => {
       res.json(result)
     })

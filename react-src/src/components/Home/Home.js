@@ -37,12 +37,12 @@ class Home extends Component {
         response.data[i].start_time = new Date(response.data[i].start_time);
       }
       this.setState({ consume_data: response.data });
-      console.log(response.data)
+      console.log('updated');
     })
     .catch((err) => {
       console.log(err);
     });
-    //this.poll = setTimeout(this.fetchConsumeData, 3*1000);
+    this.poll = setTimeout(this.fetchConsumeData, 3*1000);
   }
 
   render() {
@@ -63,7 +63,7 @@ class Home extends Component {
           </ul>
         </Container>
         <br/>
-        <EnergyAreaChart data={[5,10,1,3]} size={[500,500]}/>
+        <EnergyAreaChart data={this.state.consume_data} />
       </div>
     );
   }

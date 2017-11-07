@@ -1,51 +1,57 @@
-import React, { Component } from 'react';
-import { scaleLinear } from 'd3-scale';
-import { max } from 'd3-array';
-import { select } from 'd3-selection';
+import React, { Component } from "react";
+import { AreaChart } from "react-d3-basic";
 
 class EnergyAreaChart extends Component {
+  constructor(props) {
+    super(props);
 
-   constructor(props){
-      super(props)
-      this.createBarChart = this.createBarChart.bind(this)
-   }
-   componentDidMount() {
-      this.createBarChart()
-   }
-   componentDidUpdate() {
-      this.createBarChart()
-   }
-   createBarChart() {
-      const node = this.node
-      const dataMax = max(this.props.data)
-      const yScale = scaleLinear()
-         .domain([0, dataMax])
-         .range([0, this.props.size[1]])
-   select(node)
-      .selectAll('rect')
-      .data(this.props.data)
-      .enter()
-      .append('rect')
-   
-   select(node)
-      .selectAll('rect')
-      .data(this.props.data)
-      .exit()
-      .remove()
-   
-   select(node)
-      .selectAll('rect')
-      .data(this.props.data)
-      .style('fill', '#fe9922')
-      .attr('x', (d,i) => i * 25)
-      .attr('y', d => this.props.size[1] - yScale(d))
-      .attr('height', d => yScale(d))
-      .attr('width', 25)
-   }
-render() {
-      return <svg ref={node => this.node = node}
-      width={500} height={500}>
-      </svg>
-   }
+    this.toggle = this.toggle.bind(this);
+
+    this.state = {
+      active: true
+    };
+  }
+
+  toggle() {
+    this.setState({
+      active: !this.state.active
+    });
+  }
+  render() {
+
+    var data = this.props.data;
+    var chartSeries = [
+        {
+          field: "energy",
+          name: "Energy Usage",
+          color: "#ff7f0e",
+          area: true,
+          style: {
+            strokeOpacity: 1,
+            fillOpacity: 0.2
+          }
+        }
+      ],
+      x = function(d) {
+        return d.start_time;
+      },
+      xScale = "time",
+      y = function(d) {
+        return +d;
+      };
+
+    return (
+      <div>
+        <button onClick={this.toggle}>toggle</button>
+        <AreaChart
+          data={data}
+          chartSeries={chartSeries}
+          x={x}
+          y={y}
+          xScale={xScale}
+        />
+      </div>
+    );
+  }
 }
 export default EnergyAreaChart;

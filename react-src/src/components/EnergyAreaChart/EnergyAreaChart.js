@@ -1,3 +1,5 @@
+// https://github.com/react-d3/react-d3-basic/blob/master/example/src/area.jsx
+
 import React, { Component } from "react";
 import { AreaChart } from "react-d3-basic";
 

@@ -13,7 +13,8 @@ class Home extends Component {
 
     this.state = {
       consume_data: [],
-      avg_energy: "No Data"
+      avg_energy: "No Data",
+      dataLoaded: false
     }
 
     this.fetchConsumeData = this.fetchConsumeData.bind(this);
@@ -54,6 +55,7 @@ class Home extends Component {
         response.data[i].start_time = new Date(response.data[i].start_time);
       }
       this.setState({ consume_data: response.data });
+      this.setState({ dataLoaded: true });
       this.calcAverages();  
     })
     .catch((err) => {
@@ -71,9 +73,14 @@ class Home extends Component {
       curr_reading = this.state.consume_data[0]
     }
 
-    
-    
+    var EnergyPlaceholder;
+    if (this.state.dataLoaded) {
+      EnergyPlaceholder = <EnergyAreaChart data={this.state.consume_data} />
+    } else {
+      EnergyPlaceholder = <h2> Loading Data...</h2>;
+    }
 
+    
     return (
       <div>
         <Container>
@@ -91,7 +98,7 @@ class Home extends Component {
         </Container>
         <br/>
         <h4> Current Energy Reading: </h4><h2>{`${curr_reading.energy} watt-hours`}</h2>
-        <EnergyAreaChart data={this.state.consume_data} />
+        { EnergyPlaceholder }
         <p> Average during chart: {`${this.state.avg_energy}`}</p>
         <br/>
         <br/>

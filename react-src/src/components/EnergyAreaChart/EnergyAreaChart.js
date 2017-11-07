@@ -2,21 +2,7 @@ import React, { Component } from "react";
 import { AreaChart } from "react-d3-basic";
 
 class EnergyAreaChart extends Component {
-  constructor(props) {
-    super(props);
 
-    this.toggle = this.toggle.bind(this);
-
-    this.state = {
-      active: true
-    };
-  }
-
-  toggle() {
-    this.setState({
-      active: !this.state.active
-    });
-  }
   render() {
 
     var data = this.props.data;
@@ -42,7 +28,6 @@ class EnergyAreaChart extends Component {
 
     return (
       <div>
-        <button onClick={this.toggle}>toggle</button>
         <AreaChart
           data={data}
           chartSeries={chartSeries}

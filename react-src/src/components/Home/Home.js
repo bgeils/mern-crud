@@ -37,7 +37,7 @@ class Home extends Component {
         response.data[i].start_time = new Date(response.data[i].start_time);
       }
       this.setState({ consume_data: response.data });
-      console.log('updated');
+      
     })
     .catch((err) => {
       console.log(err);
@@ -64,6 +64,7 @@ class Home extends Component {
         </Container>
         <br/>
         <EnergyAreaChart data={this.state.consume_data} />
+        <h2> updated</h2>
       </div>
     );
   }

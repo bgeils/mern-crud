@@ -28,7 +28,7 @@ class EnergyAreaChart extends Component {
           area: true,
           style: {
             strokeOpacity: 1,
-            fillOpacity: 0.2
+            fillOpacity: 0.4
           }
         }
       ],

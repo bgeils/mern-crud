@@ -97,7 +97,7 @@ class Home extends Component {
           </ul>
         </Container>
         <br/>
-        <h4> Current Energy Reading: </h4><h2>{`${curr_reading.energy} watt-hours`}</h2>
+        <h4> Current Energy Reading: </h4><h2>{`${curr_reading.energy} watts`}</h2>
         { EnergyPlaceholder }
         <p> Average during chart: {`${this.state.avg_energy}`}</p>
         <br/>

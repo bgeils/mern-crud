@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Container } from 'semantic-ui-react';
 import axios from 'axios';
 
 import EnergyAreaChart from '../EnergyAreaChart/EnergyAreaChart';
+import HomeCards from '../HomeCards/HomeCards';
 
 class Home extends Component {
 
@@ -68,6 +68,7 @@ class Home extends Component {
   }
 
   render() {
+
     let curr_reading = "No Data";
     if(this.state.consume_data.length !== 0){
       curr_reading = this.state.consume_data[0]
@@ -80,28 +81,31 @@ class Home extends Component {
       EnergyPlaceholder = <h2> Loading Data...</h2>;
     }
 
+    let HomeCardPlaceHolder = <HomeCards 
+                                avg_energy={this.state.avg_energy} 
+                                curr_reading={curr_reading} 
+                              />;
     
     return (
       <div>
-        <Container>
-        <h3>My Energy Dashboard</h3>
-          <em id='online'>{`${this.state.consume_data.length} docs found on consumer data.`}</em>
-          <h4> Things to add to energy panel:</h4>
-          <ul>
-            <li> [ X ] Ability to see current power draw  </li>
-            <li> Today's power usage (so far today)</li>
-            <li> Last 7 days power usage </li>
-            <li> Last 30 days usage </li>
-            <li> Last 365 days power usage </li>
-            <li> Daily average power usage </li>
-          </ul>
-        </Container>
+        <h1>My Energy Dashboard</h1>
+        <em id='online'>{`${this.state.consume_data.length} docs found on consumer data.`}</em>
         <br/>
-        <h4> Current Energy Reading: </h4><h2>{`${curr_reading.energy} watts`}</h2>
+        <br/>
+        { HomeCardPlaceHolder }
+        <br/>
+
         { EnergyPlaceholder }
-        <p> Average during chart: {`${this.state.avg_energy}`}</p>
-        <br/>
-        <br/>
+        
+        <h4> Things to add to energy panel:</h4>
+        <ul>
+          <li> [ X ] Ability to see current power draw  </li>
+          <li> Today's power usage (so far today)</li>
+          <li> Last 7 days power usage </li>
+          <li> Last 30 days usage </li>
+          <li> Last 365 days power usage </li>
+          <li> Daily average power usage </li>
+        </ul>
       </div>
     );
   }

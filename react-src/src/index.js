@@ -5,8 +5,8 @@ import 'semantic-ui-css/semantic.min.css';
 import './index.css';
 
 // import App from './components/App/App';
-import Higher from './components/Higher/Higher';
+import App from './components/App/App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<Higher />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();

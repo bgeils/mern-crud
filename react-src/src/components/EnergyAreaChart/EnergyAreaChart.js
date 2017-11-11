@@ -11,7 +11,7 @@ class EnergyAreaChart extends Component {
     var chartSeries = [
         {
           field: "energy",
-          name: "Energy Usage",
+          name: "Power Usage",
           color: "#ff7f0e",
           area: true,
           style: {
@@ -36,6 +36,9 @@ class EnergyAreaChart extends Component {
           x={x}
           y={y}
           xScale={xScale}
+          showLegend={false}
+          yLabel="Watts"
+          xLabel="Time (UTC)"
         />
       </div>
     );

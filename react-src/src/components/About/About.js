@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Link, Route } from 'react-router-dom';
 import { Container, Header, Image, Menu, Visibility } from 'semantic-ui-react';
 
-import Team from '../Team/Team';
+import Team from './Team/Team';
 import General from './General/General';
 import Technology from './Technology/Technology';
 

@@ -53,12 +53,7 @@ module.exports = {
   // We generate sourcemaps in production. This is slow but gives good results.
   // You can exclude the *.map files from the build during deployment.
   devtool: 'source-map',
-  historyApiFallback: {
-      // Paths with dots should still use the history fallback.
-      // See https://github.com/facebookincubator/create-react-app/issues/387.
-      disableDotRule: true,
-      historyApiFallback: true
-    },
+  
   // In production, we only want to load the polyfills and the app code.
   entry: [require.resolve('./polyfills'), paths.appIndexJs],
   output: {
@@ -335,4 +330,7 @@ module.exports = {
     net: 'empty',
     tls: 'empty',
   },
+  devServer: {
+      historyApiFallback: true
+  }
 };

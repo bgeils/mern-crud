@@ -11,7 +11,7 @@ import {
 import Test from '../Test/Test';
 import About from '../About/About';
 import Dashboard from '../Dashboard/Dashboard';
-import Billing from '../Billing/Billing';
+
 
 class App extends Component {
   state = {}
@@ -40,15 +40,7 @@ class App extends Component {
           >
             Dashboard
           </Menu.Item>
-          <Menu.Item
-          name='account'
-          as={Link}
-          to='/account'
-          active={activeItem === 'account'}
-          onClick={this.handleItemClick}
-          >
-            Account
-          </Menu.Item>
+
           <Menu.Item
           name='about'
           as={Link}
@@ -68,15 +60,6 @@ class App extends Component {
             Market Place
           </Menu.Item>
 
-          <Menu.Item
-          name='billing'
-          as={Link}
-          to='/billing'
-          active={activeItem === 'billing'}
-          onClick={this.handleItemClick}
-          >
-            Billing
-          </Menu.Item>
           <Menu.Item
           name='test'
           as={Link}
@@ -103,8 +86,6 @@ class App extends Component {
                   <Switch>
                     <Route exact path="/" component={Dashboard}/>
                     <Route exact path="/test" component={Test}/>
-                    <Route exact path="/billing" component={Billing}/>
-                    <Route exact path="/about" component={ About }/>
                     <Route exact path="/about/team" component={ About }/>
                     <Route exact path="/about/technology" component={ About }/>
 

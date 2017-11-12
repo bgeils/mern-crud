@@ -33,6 +33,7 @@ module.exports = {
       // Paths with dots should still use the history fallback.
       // See https://github.com/facebookincubator/create-react-app/issues/387.
       disableDotRule: true,
+      historyApiFallback: true
     },
   // These are the "entry points" to our application.
   // This means they will be the "root" imports that are included in JS bundle.

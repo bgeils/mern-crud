@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Menu, Container } from 'semantic-ui-react';
+import { Grid, Menu, Container, Segment, Icon } from 'semantic-ui-react';
 
 import {
   BrowserRouter as Router,
@@ -10,7 +10,7 @@ import {
 
 import Test from '../Test/Test';
 import About from '../About/About';
-import Home from '../Home/Home';
+import Dashboard from '../Dashboard/Dashboard';
 import Billing from '../Billing/Billing';
 
 class App extends Component {
@@ -21,18 +21,24 @@ class App extends Component {
   render() {
      const { activeItem } = this.state
 
+
     const Header = () => (
     <Grid>
       <Grid.Column only='tablet computer'>
-        <Menu>
+      <Segment inverted>
+        <Menu inverted>
+          <Menu.Item header>
+            
+            <h2><Icon inverted name='lightning' className="bolt-icon" />Open Energy</h2>
+          </Menu.Item>
           <Menu.Item
-          name='home'
+          name='dashboard'
           as={Link}
           to='/'
-          active={activeItem === 'home'}
+          active={activeItem === 'dashboard'}
           onClick={this.handleItemClick}
           >
-            Home
+            Dashboard
           </Menu.Item>
           <Menu.Item
           name='account'
@@ -81,6 +87,7 @@ class App extends Component {
             Test
           </Menu.Item>
         </Menu>
+        </Segment>
       </Grid.Column>
     </Grid>
     
@@ -94,10 +101,10 @@ class App extends Component {
               <Grid.Row only='tablet computer'>
                 <Container>
                   <Switch>
-                    <Route exact path="/" component={Home}/>
+                    <Route exact path="/" component={Dashboard}/>
                     <Route exact path="/test" component={Test}/>
                     <Route exact path="/billing" component={Billing}/>
-                    <Route exact path="/about" component={ About }/>
+                    <Route path="/about" component={ About }/>
                   </Switch>
                 </Container>
               </Grid.Row>

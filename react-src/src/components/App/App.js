@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Grid, Menu, Container, Segment, Icon } from 'semantic-ui-react';
+import { MemoryRouter } from 'react-router'
 
 import {
-  BrowserRouter as Router,
   Route,
   Switch,
   Link
@@ -11,6 +11,7 @@ import {
 import Test from '../Test/Test';
 import About from '../About/About';
 import Dashboard from '../Dashboard/Dashboard';
+
 
 
 class App extends Component {
@@ -77,7 +78,7 @@ class App extends Component {
   )
 
     return (
-        <Router>
+        <MemoryRouter>
           <div>
             <Header/>
             <Grid>
@@ -100,7 +101,7 @@ class App extends Component {
               </Grid.Row>
             </Grid>
           </div>
-        </Router>
+        </MemoryRouter>
       
     );
   }

@@ -23,7 +23,7 @@ npm install
 
 Run the *main server*. It listens on port 3000.
 ```bash
-CORS=1 node server
+npm run dev
 ```
 View it on the browser.
 
@@ -63,8 +63,9 @@ docker-compose up
 ```bash
 cd react-src
 npm run build
+git add -A
+git commit -a -m "production build"
 git push heroku master
-heroku ps:scale web=1
 heroku open
 ```
 <br>

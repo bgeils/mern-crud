@@ -18,10 +18,12 @@ class Dashboard extends Component {
     }
 
     this.fetchConsumeData = this.fetchConsumeData.bind(this);
+    this.fetchSevenDayData = this.fetchSevenDayData.bind(this);
   }
 
   componentDidMount() {
     this.fetchConsumeData();
+    this.fetchSevenDayData();
   }
 
   componentWillUnmount() {
@@ -63,8 +65,19 @@ class Dashboard extends Component {
     });
     
     this.poll = setTimeout(this.fetchConsumeData, 3*1000);
+  }
 
-
+  fetchSevenDayData(){
+    axios.get(`${this.server}/api/consum/seven`)
+    .then((response) => {
+      for(var i=0; i<response.data.length;i++){
+        response.data[i].start_time = new Date(response.data[i].start_time);
+      }
+      console.log(response.data)
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   }
 
   render() {
@@ -89,8 +102,8 @@ class Dashboard extends Component {
     return (
       <div>
         <h1>My Energy Dashboard</h1>
-        <em id='online'>{`${this.state.consume_data.length} docs found on consumer data.`}</em>
-        <br/>
+        
+        
         <br/>
         { HomeCardPlaceHolder }
         <br/>

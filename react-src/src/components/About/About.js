@@ -4,7 +4,6 @@ import { Container, Header, Image, Menu, Visibility } from 'semantic-ui-react';
 
 import Team from './Team/Team';
 import General from './General/General';
-import Technology from './Technology/Technology';
 
 const menuStyle = {
   border: 'none',
@@ -47,7 +46,7 @@ class About extends Component {
 
         <Container text style={{ marginTop: '2em' }}>
           <Header as='h1'>Open Energy Explained</Header>
-          <p><i>Our mission is simple, we want to incentivize sustainable energy.</i></p>
+          <p><i>Our mission is simple, we are incentivizing sustainable energy.</i></p>
         </Container>
 
         {/* Attaching the top menu is a simple operation, we only switch `fixed` prop add add another styles if it has
@@ -70,13 +69,13 @@ class About extends Component {
               <Menu.Item header>Learn more</Menu.Item>
               <Menu.Item as={Link} to='/about'>General</Menu.Item>
               <Menu.Item as={Link} to='/about/team'>Team</Menu.Item>
-              <Menu.Item as={Link} to='/about/technology'>Technology</Menu.Item>
+              
             </Container>
           </Menu>
         </Visibility>
         
         <Switch>
-          <Route exact path="/about/technology" component={Technology}/>
+          
           <Route exact path="/about/team" component={Team}/>
           <Route extact path="/about" component={General} {...this.state} />
         </Switch>

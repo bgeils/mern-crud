@@ -28,6 +28,4 @@ router.get('/seven', (req, res) => {
     });
 });
 
-
-
 module.exports = router;

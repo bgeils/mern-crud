@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {  Image, Card } from 'semantic-ui-react';
 
 import './Team.css';
+import alec from '../../../media/AlecDorenkamp.jpg';
 
 class Team extends Component {
 	
@@ -20,7 +21,7 @@ class Team extends Component {
 			  </Card>
 		    
 		    <Card>
-			  <Image src='http://sdmay18-41.sd.ece.iastate.edu/images/alec.jpg' className="team-pic" />
+			  <Image src={alec} className="team-pic" />
 			    <Card.Content>
 			      <Card.Header> Alec Dorenkamp</Card.Header>
 			      <Card.Meta>Joined in 2017</Card.Meta>

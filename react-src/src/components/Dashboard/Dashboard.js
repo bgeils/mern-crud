@@ -35,6 +35,7 @@ class Dashboard extends Component {
     this.fetchConsumeData();
     this.fetchSevenDayData();
     this.fetchThirtyDayData();
+    this.fetchYearDayData();
   }
 
   componentWillUnmount() {
@@ -96,6 +97,7 @@ class Dashboard extends Component {
   }
 
   fetchThirtyDayData(){
+
     axios.get(`${this.server}/api/consum/agg/30`)
     .then((response) => {
       for(var i=0; i<response.data.length;i++){
@@ -153,7 +155,6 @@ class Dashboard extends Component {
     return (
       <div>
         <h1>My Energy Dashboard</h1>
-        
         
         <br/>
         { HomeCardPlaceHolder }

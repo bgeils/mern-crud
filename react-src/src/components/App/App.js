@@ -51,25 +51,7 @@ class App extends Component {
           >
             About
           </Menu.Item>
-          <Menu.Item
-          name='market'
-          as={Link}
-          to='/market'
-          active={activeItem === 'market'}
-          onClick={this.handleItemClick}
-          >
-            Market Place
-          </Menu.Item>
 
-          <Menu.Item
-          name='test'
-          as={Link}
-          to='/test'
-          active={activeItem === 'test'}
-          onClick={this.handleItemClick}
-          >
-            Test
-          </Menu.Item>
         </Menu>
         </Segment>
       </Grid.Column>
@@ -89,8 +71,6 @@ class App extends Component {
                     <Route exact path="/test" component={Test}/>
                     <Route exact path="/about" component={ About }/>
                     <Route exact path="/about/team" component={ About }/>
-                    <Route exact path="/about/technology" component={ About }/>
-
                   </Switch>
                 </Container>
               </Grid.Row>

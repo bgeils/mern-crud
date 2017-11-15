@@ -15,11 +15,20 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/seven', (req, res) => {
-	var today = new Date();
-	today.setDate(today.getDate() - 7);
+router.get('/agg/:num', (req, res) => {
+  let num_days = parseInt(req.params.num)
+	var search_date = new Date();
+	search_date.setDate(search_date.getDate() - search_date);
 
-  ConsumedEnergy.find({start_time:{$gte:today}}).sort({'start_time': 1}).limit(30)
+  ConsumedEnergy.aggregate([
+    { "$match": {
+        "start_time": { "$gte": search_date }
+    }},
+    { "$group": {
+        "_id": null,
+        "power": { "$avg": "$power" }
+    }}
+])
     .then((result) => {
       res.json(result)
     })

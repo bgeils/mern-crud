@@ -10,7 +10,7 @@ class EnergyAreaChart extends Component {
     var data = this.props.data;
     var chartSeries = [
         {
-          field: "energy",
+          field: "power",
           name: "Power Usage",
           color: "#02d363",
           area: true,

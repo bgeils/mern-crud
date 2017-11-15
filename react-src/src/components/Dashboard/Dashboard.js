@@ -4,6 +4,10 @@ import axios from 'axios';
 import EnergyAreaChart from '../EnergyAreaChart/EnergyAreaChart';
 import HomeCards from '../HomeCards/HomeCards';
 
+import './Dashboard.css';
+
+import energychart_placeholder from '../../media/energychart_placeholder.png';
+
 class Dashboard extends Component {
 
   constructor() {
@@ -13,17 +17,24 @@ class Dashboard extends Component {
 
     this.state = {
       consume_data: [],
-      avg_energy: "No Data",
-      dataLoaded: false
+      avg_energy: false,
+      dataLoaded: false,
+      seven: false,
+      thirty: false,
+      year: false
     }
 
     this.fetchConsumeData = this.fetchConsumeData.bind(this);
     this.fetchSevenDayData = this.fetchSevenDayData.bind(this);
+    this.fetchThirtyDayData = this.fetchThirtyDayData.bind(this);
+    this.fetchYearDayData = this.fetchYearDayData.bind(this);
+
   }
 
   componentDidMount() {
     this.fetchConsumeData();
     this.fetchSevenDayData();
+    this.fetchThirtyDayData();
   }
 
   componentWillUnmount() {
@@ -43,7 +54,8 @@ class Dashboard extends Component {
         );
     
     if(avg.length !== 0){
-      this.setState({ avg_energy: Math.round(avg[1].average *100)/100 });
+      let ret = Math.round(avg[0].average *10)/10
+      this.setState({ avg_energy: ret });
     }
   }
   
@@ -51,7 +63,7 @@ class Dashboard extends Component {
   // Fetch data from the back-end every 3 seconds
   fetchConsumeData() {
     //console.log("polling");
-    axios.get(`${this.server}/api/consum/`)
+    axios.get(`${this.server}/api/consum`)
     .then((response) => {
       for(var i=0; i<response.data.length;i++){
         response.data[i].start_time = new Date(response.data[i].start_time);
@@ -68,12 +80,47 @@ class Dashboard extends Component {
   }
 
   fetchSevenDayData(){
-    axios.get(`${this.server}/api/consum/seven`)
+    axios.get(`${this.server}/api/consum/agg/7`)
     .then((response) => {
       for(var i=0; i<response.data.length;i++){
         response.data[i].start_time = new Date(response.data[i].start_time);
       }
-      console.log(response.data)
+      if(response.data.length){
+        let ret = parseInt(response.data[0].power * 10, 10) / 10
+        this.setState({ seven: ret });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
+
+  fetchThirtyDayData(){
+    axios.get(`${this.server}/api/consum/agg/30`)
+    .then((response) => {
+      for(var i=0; i<response.data.length;i++){
+        response.data[i].start_time = new Date(response.data[i].start_time);
+      }
+      if(response.data.length){
+        let ret = parseInt(response.data[0].power * 10, 10) / 10
+        this.setState({ thirty: ret });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
+
+  fetchYearDayData(){
+    axios.get(`${this.server}/api/consum/agg/365`)
+    .then((response) => {
+      for(var i=0; i<response.data.length;i++){
+        response.data[i].start_time = new Date(response.data[i].start_time);
+      }
+      if(response.data.length){
+        let ret = parseInt(response.data[0].power * 10, 10) / 10
+        this.setState({ year: ret });
+      }
     })
     .catch((err) => {
       console.log(err);
@@ -91,12 +138,16 @@ class Dashboard extends Component {
     if (this.state.dataLoaded) {
       EnergyPlaceholder = <EnergyAreaChart data={this.state.consume_data} />
     } else {
-      EnergyPlaceholder = <h2> Loading Data...</h2>;
+      EnergyPlaceholder = <img alt="" src={energychart_placeholder} style={{height:'520px',width:'890px',paddingLeft:'35px',paddingTop: '15px'}} />
+      
     }
 
     let HomeCardPlaceHolder = <HomeCards 
                                 avg_energy={this.state.avg_energy} 
-                                curr_reading={curr_reading} 
+                                curr_reading={curr_reading}
+                                seven={this.state.seven}
+                                thirty={this.state.thirty}
+                                year={this.state.year}
                               />;
     
     return (
@@ -109,16 +160,7 @@ class Dashboard extends Component {
         <br/>
 
         { EnergyPlaceholder }
-        
-        <h4> Things to add to energy panel:</h4>
-        <ul>
-          <li> [ X ] Ability to see current power draw  </li>
-          <li> Today's power usage (so far today)</li>
-          <li> Last 7 days power usage </li>
-          <li> Last 30 days usage </li>
-          <li> Last 365 days power usage </li>
-          <li> Daily average power usage </li>
-        </ul>
+
       </div>
     );
   }

@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
-import { Container, Divider, Grid, Header, Icon, Image, List, Menu, Segment, Visibility } from 'semantic-ui-react';
+import { Container, Icon, Menu, Visibility } from 'semantic-ui-react';
 
 const overlayStyle = {
   float: 'left',
@@ -27,35 +27,51 @@ const fixedOverlayMenuStyle = {
 const Paragraph = () => (
   <p>
     {[
-      'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ',
-      'tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas ',
-      'semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ',
-      'ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean ',
-      'fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. ',
-      'Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor ',
-      'neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, ',
-      'accumsan porttitor, facilisis luctus, metus',
+      'Green energy is the future. It will be vital to focus on the use of renewable energy sources in order to slow ',
+      'the degradation of our environment. But green energy also provides an interesting edge over traditional forms ',
+      'of energy generation. It is absolutely feasible economically for individuals and businesses to tap into the ',
+      'energy generation market without an enormous amount of infrastructure or upfront cost. As solar and wind ',
+      'technology becomes less and less expensive, this will become easier and easier to do, and the payoff will come ',
+      'quicker and quicker.'
     ].join('')}
   </p>
 )
 
-const LeftImage = () => (
-  <Image
-    floated='left'
-    size='medium'
-    src='/assets/images/wireframe/square-image.png'
-    style={{ margin: '2em 2em 2em -4em' }}
-  />
+const Paragraph2 = () => (
+  <p>
+    {[
+      "But what if there was a way to take advantage of this new distributed energy generation that doesn't",
+      ' revolve around the control of the utility company? This is exactly what we are proposing with our project.',
+      " With only a smart meter and a web application, a new open and competitive market will be created. It's a",
+      " sunny day and you're producing more energy than you're consuming? Great, there's some extra money you can ",
+      'make by selling it directly to someone who needs it. Our software will allow the user to have as much control',
+      ' or as little as desired. They can manage every watt-hour of energy, or they can allow the software to optimize',
+      ' their transactions within a certain range. The hardware and software will integrate seamlessly such that after',
+      ' installation, the system can be essentially fully automated, requiring little to no work from the user. With this',
+      ' technology, we hope to change the energy market to better fit the upcoming trend of widespread renewable energy sources. '
+    ].join('')}
+  </p>
 )
 
-const RightImage = () => (
-  <Image
-    floated='right'
-    size='medium'
-    src='/assets/images/wireframe/square-image.png'
-    style={{ margin: '2em -4em 2em 2em' }}
-  />
-)
+
+
+// const LeftImage = () => (
+//   <Image
+//     floated='left'
+//     size='medium'
+//     src='/assets/images/wireframe/square-image.png'
+//     style={{ margin: '2em 2em 2em -4em' }}
+//   />
+// )
+
+// const RightImage = () => (
+//   <Image
+//     floated='right'
+//     size='medium'
+//     src='/assets/images/wireframe/square-image.png'
+//     style={{ margin: '2em -4em 2em 2em' }}
+//   />
+// )
 
 class General extends Component {
 
@@ -85,7 +101,7 @@ class General extends Component {
     return (
       <div>
         <Container text>
-          { _.times(3, i => <Paragraph key={i} />) }
+          <Paragraph />
 
           {/* Example with overlay menu is more complex, SUI simply clones all elements inside, but we should use a
               different approach.
@@ -109,89 +125,26 @@ class General extends Component {
               style={this.state.overlayFixed ? fixedOverlayMenuStyle : overlayMenuStyle}
               vertical
             >
-              <Menu.Item>
-                <Icon name='twitter' />
-               Twitter
-              </Menu.Item>
-
+              <a href="http://brendongeils.com/energy" target="_blank" rel="noopener noreferrer">
               <Menu.Item >
-                <Icon name='facebook' />
-               Share
+                <Icon name='world' />
+               Web
               </Menu.Item>
+              </a>
 
+              <a href="mailto:brendonjgeils@gmail.com">
               <Menu.Item>
                 <Icon name='mail' />
                Email
               </Menu.Item>
+              </a>
+
             </Menu>
           </div>
 
-          { _.times(3, i => <Paragraph key={i} />) }
-          <LeftImage />
-
-          <Paragraph />
-          <RightImage />
-
-          { _.times(4, i => <Paragraph key={i} />) }
-          <LeftImage />
-
-          <Paragraph />
-          <RightImage />
-
-          { _.times(2, i => <Paragraph key={i} />) }
+          <Paragraph2/>
+          
         </Container>
-
-        <Segment
-          inverted
-          style={{ margin: '5em 0em 0em', padding: '5em 0em' }}
-          vertical
-        >
-          <Container textAlign='center'>
-            <Grid columns={4} divided stackable inverted>
-              <Grid.Row>
-                <Grid.Column>
-                  <Header inverted as='h4' content='Group 1' />
-                  <List link inverted>
-                    <List.Item as='a'>Link One</List.Item>
-                    <List.Item as='a'>Link Two</List.Item>
-                    <List.Item as='a'>Link Three</List.Item>
-                    <List.Item as='a'>Link Four</List.Item>
-                  </List>
-                </Grid.Column>
-                <Grid.Column>
-                  <Header inverted as='h4' content='Group 2' />
-                  <List link inverted>
-                    <List.Item as='a'>Link One</List.Item>
-                    <List.Item as='a'>Link Two</List.Item>
-                    <List.Item as='a'>Link Three</List.Item>
-                    <List.Item as='a'>Link Four</List.Item>
-                  </List>
-                </Grid.Column>
-                <Grid.Column>
-                  <Header inverted as='h4' content='Group 3' />
-                  <List link inverted>
-                    <List.Item as='a'>Link One</List.Item>
-                    <List.Item as='a'>Link Two</List.Item>
-                    <List.Item as='a'>Link Three</List.Item>
-                    <List.Item as='a'>Link Four</List.Item>
-                  </List>
-                </Grid.Column>
-                <Grid.Column>
-                  <Header inverted as='h4' content='Footer Header' />
-                  <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-            <Divider inverted section />
-            <Image src='/logo.png' centered size='mini' />
-            <List horizontal inverted divided link>
-              <List.Item as='a' href='#'>Site Map</List.Item>
-              <List.Item as='a' href='#'>Contact Us</List.Item>
-              <List.Item as='a' href='#'>Terms and Conditions</List.Item>
-              <List.Item as='a' href='#'>Privacy Policy</List.Item>
-            </List>
-          </Container>
-        </Segment>
         </div>
       )
   }

@@ -32,6 +32,7 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
+    this.loadInterval = true;
     this.fetchConsumeData();
     this.fetchSevenDayData();
     this.fetchThirtyDayData();
@@ -39,7 +40,8 @@ class Dashboard extends Component {
   }
 
   componentWillUnmount() {
-    clearInterval(this.poll);
+    this.loadInterval && clearInterval(this.poll);
+    this.loadInterval = false;
   }
 
   calcAverages(){
@@ -56,7 +58,7 @@ class Dashboard extends Component {
     
     if(avg.length !== 0){
       let ret = Math.round(avg[0].average *10)/10
-      this.setState({ avg_energy: ret });
+      this.loadInterval && this.setState({ avg_energy: ret });
     }
   }
   
@@ -69,8 +71,8 @@ class Dashboard extends Component {
       for(var i=0; i<response.data.length;i++){
         response.data[i].start_time = new Date(response.data[i].start_time);
       }
-      this.setState({ consume_data: response.data });
-      this.setState({ dataLoaded: true });
+      this.loadInterval && this.setState({ consume_data: response.data });
+      this.loadInterval && this.setState({ dataLoaded: true });
       this.calcAverages();  
     })
     .catch((err) => {
@@ -88,7 +90,7 @@ class Dashboard extends Component {
       }
       if(response.data.length){
         let ret = parseInt(response.data[0].power * 10, 10) / 10
-        this.setState({ seven: ret });
+        this.loadInterval && this.setState({ seven: ret });
       }
     })
     .catch((err) => {
@@ -105,7 +107,7 @@ class Dashboard extends Component {
       }
       if(response.data.length){
         let ret = parseInt(response.data[0].power * 10, 10) / 10
-        this.setState({ thirty: ret });
+        this.loadInterval && this.setState({ thirty: ret });
       }
     })
     .catch((err) => {
@@ -121,7 +123,7 @@ class Dashboard extends Component {
       }
       if(response.data.length){
         let ret = parseInt(response.data[0].power * 10, 10) / 10
-        this.setState({ year: ret });
+        this.loadInterval && this.setState({ year: ret });
       }
     })
     .catch((err) => {

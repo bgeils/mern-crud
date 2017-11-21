@@ -26,35 +26,38 @@ const fixedOverlayMenuStyle = {
 
 const Paragraph = () => (
   <p>
-    {[
-      'Green energy is the future. It will be vital to focus on the use of renewable energy sources in order to slow ',
-      'the degradation of our environment. But green energy also provides an interesting edge over traditional forms ',
-      'of energy generation. It is absolutely feasible economically for individuals and businesses to tap into the ',
-      'energy generation market without an enormous amount of infrastructure or upfront cost. As solar and wind ',
-      'technology becomes less and less expensive, this will become easier and easier to do, and the payoff will come ',
-      'quicker and quicker.'
-    ].join('')}
+    Open Energy seeks to provide energy consumers and producers a platform to reduce their energy bill and profit from energy generation. 
+    Through our transparent energy consumption tools, we provide consumers with real time analysis after installing our smart meter hardware 
+    technology. Consumers have the opportunity to understand trends within their usage in an effort to systematically reduce their consumption. 
   </p>
 )
+
 
 const Paragraph2 = () => (
   <p>
-    {[
-      "But what if there was a way to take advantage of this new distributed energy generation that doesn't",
-      ' revolve around the control of the utility company? This is exactly what we are proposing with our project.',
-      " With only a smart meter and a web application, a new open and competitive market will be created. It's a",
-      " sunny day and you're producing more energy than you're consuming? Great, there's some extra money you can ",
-      'make by selling it directly to someone who needs it. Our software will allow the user to have as much control',
-      ' or as little as desired. They can manage every watt-hour of energy, or they can allow the software to optimize',
-      ' their transactions within a certain range. The hardware and software will integrate seamlessly such that after',
-      ' installation, the system can be essentially fully automated, requiring little to no work from the user. With this',
-      ' technology, we hope to change the energy market to better fit the upcoming trend of widespread renewable energy sources. '
-    ].join('')}
+    Currently under development is the energy production platform at Open Energy. The energy production platform consists of real time monitoring 
+    similar to the consumption platform while also employing an energy marketplace. The marketplace allows users that have energy generation to sell 
+    their excess energy to consumers. This is a net benefit for the consumer with a more competitive market to drive energy prices down. A small 
+    transactional fee is paid to the grid in order to facilitate this cost of energy transmission. 
+  </p>
+)
+const Paragraph3 = () => (
+  <p>
+    The energy marketplace will consist of an automated matching system for users that would like to purchase or sell third party energy. 
+    From a consumer’s perspective the system would identify the cheapest energy source and purchase accordingly. With increased usage the automation 
+    algorithm will match better energy sources due to more predictable energy consumption at your meter. As renewable energy generation technology 
+    prices drop, Open Energy is the platform to capitalize on sustainable energy at reduced prices.  
   </p>
 )
 
-
-
+const Paragraph4 = () => (
+  <p>
+    At a grid level having real time energy data will allow the whole sale purchase of energy less variability and thus a reduction in over 
+    purchasing. Furthermore, with third party energy generation the upfront cost of new generation plants is reduced. A focus on grid transmission 
+    infrastructure can become top of mind for utilities. Taking into account the distance of each marketplace energy transaction there is an 
+    opportunity to reduce loss of power during transmission and distribution.
+  </p>
+)
 // const LeftImage = () => (
 //   <Image
 //     floated='left'
@@ -143,6 +146,10 @@ class General extends Component {
           </div>
 
           <Paragraph2/>
+
+          <Paragraph3/>
+
+          <Paragraph4/>
           
         </Container>
         </div>

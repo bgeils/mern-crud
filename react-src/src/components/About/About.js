@@ -46,7 +46,7 @@ class About extends Component {
 
         <Container text style={{ marginTop: '2em' }}>
           <Header as='h1'>Open Energy Explained</Header>
-          <p><i>Our mission is simple, we are incentivizing sustainable energy.</i></p>
+          <p><i>Our mission is simple, we are incentivizing sustainable energy through transparency in the energy marketplace.</i></p>
         </Container>
 
         {/* Attaching the top menu is a simple operation, we only switch `fixed` prop add add another styles if it has

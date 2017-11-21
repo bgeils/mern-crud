@@ -12,7 +12,7 @@ class EnergyAreaChart extends Component {
         {
           field: "power",
           name: "Power Usage",
-          color: "#02d363",
+          color: "#ce0000",
           area: true,
           style: {
             strokeOpacity: 1,

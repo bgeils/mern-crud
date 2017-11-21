@@ -40,6 +40,7 @@
     "react-error-overlay": "^1.0.9",
     "react-router-dom": "^4.2.2",
     "react-stripe-elements": "^1.2.0",
+    "react-tooltip": "^3.4.0",
     "semantic-ui-css": "^2.2.11",
     "semantic-ui-react": "^0.71.1",
     "socket.io-client": "^2.0.3",

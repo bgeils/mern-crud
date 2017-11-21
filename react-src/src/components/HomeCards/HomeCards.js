@@ -1,81 +1,91 @@
 import React, { Component } from 'react';
-import { Card, Header } from 'semantic-ui-react';
+import ReactTooltip from 'react-tooltip';
+import { Segment, Card, Header } from 'semantic-ui-react';
 
 import './HomeCards.css';
 
 class HomeCards extends Component {
 
   render() {
-
+    
     let ChartAvgPlaceholder;
-    if(this.props.avg_energy === undefined){
-      ChartAvgPlaceholder = <h1> Loading </h1>
+    if(this.props.avg_energy === false){
+      ChartAvgPlaceholder = <h2> Loading </h2>
     }else{
-      ChartAvgPlaceholder = <h1> {this.props.avg_energy} W</h1>
+      ChartAvgPlaceholder = <h2> {this.props.avg_energy} W</h2>
     }
 
     let ChartSevenPlaceholder;
     if(this.props.curr_reading.power === undefined){
-      ChartSevenPlaceholder = <h1> Loading </h1>
+      ChartSevenPlaceholder = <h2> Loading </h2>
     }else{
-      ChartSevenPlaceholder = <h1> {this.props.seven} W</h1>
+      ChartSevenPlaceholder = <h2> {this.props.seven} W</h2>
     }
 
     let ChartThirtyPlaceholder;
     if(this.props.curr_reading.power === undefined){
-      ChartThirtyPlaceholder = <h1> Loading </h1>
+      ChartThirtyPlaceholder = <h2> Loading </h2>
     }else{
-      ChartThirtyPlaceholder = <h1> {this.props.thirty} W</h1>
+      ChartThirtyPlaceholder = <h2> {this.props.thirty} W</h2>
     }
 
     let ChartYearPlaceholder;
     if(this.props.curr_reading.power === undefined){
-      ChartYearPlaceholder = <h1> Loading </h1>
+      ChartYearPlaceholder = <h2> Loading </h2>
     }else{
       
-      ChartYearPlaceholder = <h1> {this.props.thirty} W</h1>
+      ChartYearPlaceholder = <h2> {this.props.thirty} W</h2>
     }
 
+    let RealTimePlaceholder;
+    if(this.props.curr_reading === "No Data"){
+      RealTimePlaceholder = <h2> Loading </h2>
+    }else{
+      RealTimePlaceholder = <h2> {this.props.curr_reading.power} W</h2>
+    }
     return (
       <div>
-        <Header as='h2'>
+      <Segment>
+        <Header as='h2' textAlign={'center'}>
           <Header.Content>
-            Energy Stats
+            Energy Statistics
           </Header.Content>
         </Header>
+      </Segment>
       
         <Card.Group itemsPerRow={5}>
-          <Card>
+          <Card data-tip="Average over the chart duration">
             <Card.Content className='center-card'>
               <h3> Chart Average</h3>
               { ChartAvgPlaceholder }
             </Card.Content>
           </Card>
-          <Card>
+          <Card data-tip="Most recent reading">
             <Card.Content className='center-card'>
               <h3> Real-Time</h3>
-              <h1> {this.props.curr_reading.power} W</h1>
+              { RealTimePlaceholder } 
             </Card.Content>
           </Card>
-          <Card>
+          <Card data-tip="Average wattage in the last seven days">
             <Card.Content className='center-card'>
               <h3> 7 Day Avg</h3>
               { ChartSevenPlaceholder } 
             </Card.Content>
           </Card>
-          <Card>
+          <Card data-tip="Average wattage in the last 30 days">
             <Card.Content className='center-card'>
               <h3> Prev Month Avg</h3>
               { ChartThirtyPlaceholder }
             </Card.Content>
           </Card>
-          <Card>
+          <Card data-tip="Average wattage in the last 365 days">
             <Card.Content className='center-card'>
               <h3>  Prev Year Avg</h3>
               { ChartYearPlaceholder }
             </Card.Content>
           </Card>
         </Card.Group>
+        <ReactTooltip />
         </div>
     );
   }

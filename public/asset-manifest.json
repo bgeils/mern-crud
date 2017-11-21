@@ -1,14 +1,15 @@
 {
   "main.css": "static/css/main.209dda48.css",
   "main.css.map": "static/css/main.209dda48.css.map",
-  "main.js": "static/js/main.25797ff0.js",
-  "main.js.map": "static/js/main.25797ff0.js.map",
+  "main.js": "static/js/main.0c354105.js",
+  "main.js.map": "static/js/main.0c354105.js.map",
   "static/media/AlecDorenkamp.jpg": "static/media/AlecDorenkamp.bf17183b.jpg",
-  "static/media/energychart_placeholder.png": "static/media/energychart_placeholder.1d34f3dc.png",
+  "static/media/bgeils.jpg": "static/media/bgeils.f7ba3de1.jpg",
   "static/media/flags.png": "static/media/flags.9c74e172.png",
   "static/media/icons.eot": "static/media/icons.674f50d2.eot",
   "static/media/icons.svg": "static/media/icons.912ec66d.svg",
   "static/media/icons.ttf": "static/media/icons.b06871f2.ttf",
   "static/media/icons.woff": "static/media/icons.fee66e71.woff",
-  "static/media/icons.woff2": "static/media/icons.af7ae505.woff2"
+  "static/media/icons.woff2": "static/media/icons.af7ae505.woff2",
+  "static/media/redblur.png": "static/media/redblur.de596ac3.png"
 }

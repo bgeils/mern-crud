@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Link, Route } from 'react-router-dom';
-import { Container, Header, Image, Menu, Visibility } from 'semantic-ui-react';
+import { Container, Header, Menu, Visibility, Icon } from 'semantic-ui-react';
 
 import Team from './Team/Team';
 import General from './General/General';
@@ -68,7 +68,7 @@ class About extends Component {
           >
             <Container text>
               <Menu.Item>
-                <Image size='mini' src='/logo.png' />
+                <Icon name='lightning' className="bolt-icon" />
               </Menu.Item>
               <Menu.Item header>Learn more</Menu.Item>
               <Menu.Item as={Link} to='/about'>General</Menu.Item>

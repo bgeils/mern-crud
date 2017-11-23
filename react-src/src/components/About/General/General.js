@@ -85,16 +85,21 @@ class General extends Component {
       overlayFixed: false,
       overlayRect: false
     }
-
+    this.unStickOverlay = this.unStickOverlay.bind(this);
+    this.stickOverlay = this.stickOverlay.bind(this);
+    this.handleOverlayRef = this.handleOverlayRef.bind(this);
   }
 
-  unStickOverlay = () => this.setState({ overlayFixed: false });
+  unStickOverlay(){
+    this.setState({ overlayFixed: false });
+  }
 
-  stickOverlay = () => this.setState({ overlayFixed: true });
+  stickOverlay(){
+    this.setState({ overlayFixed: true });
+  }
 
-  handleOverlayRef = (c) => {
+  handleOverlayRef(c){
     const { overlayRect } = this.state
-
     if (!overlayRect) this.setState({ overlayRect: _.pick(c.getBoundingClientRect(), 'height', 'width') })
   }
 

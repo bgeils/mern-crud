@@ -24,21 +24,25 @@ const fixedMenuStyle = {
   bottom: 'auto'
 }
 
-
 class About extends Component {
+  
   constructor() {
     super();
 
     this.state = {
       menuFixed: false
     }
-
+    this.stickTopMenu = this.stickTopMenu.bind(this);
+    this.unStickTopMenu = this.unStickTopMenu.bind(this);
   }
 
-  stickTopMenu = () => this.setState({ menuFixed: true });
+  stickTopMenu(){
+    this.setState({ menuFixed: true })
+  }
 
-
-  unStickTopMenu = () => this.setState({ menuFixed: false });
+  unStickTopMenu(){
+    this.setState({ menuFixed: false });
+  };
 
   render() {
     return (
@@ -75,7 +79,6 @@ class About extends Component {
         </Visibility>
         
         <Switch>
-          
           <Route exact path="/about/team" component={Team}/>
           <Route extact path="/about" component={General} {...this.state} />
         </Switch>
@@ -84,7 +87,5 @@ class About extends Component {
     );
   }
 }
-
-
 
 export default About;

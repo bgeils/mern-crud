@@ -1,76 +1,41 @@
 import React, { Component } from 'react';
-import { Grid, Menu, Container, Segment, Icon } from 'semantic-ui-react';
-import { MemoryRouter } from 'react-router'
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import { Grid, Container } from 'semantic-ui-react';
+import { Security, ImplicitCallback } from '@okta/okta-react';
 
-import {
-  Route,
-  Switch,
-  Link
-} from 'react-router-dom'
-
-import Test from '../Test/Test';
+import Navigation from '../Navigation/Navigation';
+//import Test from '../Test/Test';
 import About from '../About/About';
 import Dashboard from '../Dashboard/Dashboard';
+import LoginPage from '../LoginPage/LoginPage';
 
+import './App.css';
 
+const config = {
+  baseUrl: 'https://dev-357313.oktapreview.com',
+  issuer: 'https://dev-357313.oktapreview.com/oauth2/default',
+  redirect_uri: window.location.origin + '/implicit/callback',
+  clientId: '0oaczk8q7oKxYVZOm0h7'
+}
 
 class App extends Component {
-  state = {}
-
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   render() {
-     const { activeItem } = this.state
-
-
-    const Header = () => (
-    <Grid>
-      <Grid.Column only='tablet computer'>
-      <Segment inverted>
-        <Menu inverted>
-          <Menu.Item header>
-            
-            <h2><Icon inverted name='lightning' className="bolt-icon" />Open Energy</h2>
-          </Menu.Item>
-          <Menu.Item
-          name='dashboard'
-          as={Link}
-          to='/'
-          active={activeItem === 'dashboard'}
-          onClick={this.handleItemClick}
-          >
-            Dashboard
-          </Menu.Item>
-
-          <Menu.Item
-          name='about'
-          as={Link}
-          to='/about'
-          active={activeItem === 'about'}
-          onClick={this.handleItemClick}
-          >
-            About
-          </Menu.Item>
-
-        </Menu>
-        </Segment>
-      </Grid.Column>
-    </Grid>
-    
-  )
-
     return (
-        <MemoryRouter>
+        <BrowserRouter>
+        <Security issuer={config.issuer}
+                  client_id={config.clientId}
+                  redirect_uri={config.redirect_uri}>
           <div>
-            <Header/>
+            <Navigation/>
             <Grid>
               <Grid.Row only='tablet computer'>
                 <Container>
                   <Switch>
                     <Route exact path="/" component={Dashboard}/>
-                    <Route exact path="/test" component={Test}/>
-                    <Route exact path="/about" component={ About }/>
-                    <Route exact path="/about/team" component={ About }/>
+                    <Route path="/about" component={ About }/>
+                    <Route path='/login' render={() => <LoginPage baseUrl={config.baseUrl} />} />
+                    <Route path='/implicit/callback' component={ImplicitCallback} />
                   </Switch>
                 </Container>
               </Grid.Row>
@@ -79,14 +44,14 @@ class App extends Component {
                 <p>Sorry we aren't mobile friendly yet!</p>
                 </Container>
               </Grid.Row>
+
             </Grid>
+             
           </div>
-        </MemoryRouter>
-      
+          </Security>
+        </BrowserRouter>
     );
   }
 }
-
-
 
 export default App;

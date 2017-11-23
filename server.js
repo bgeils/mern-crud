@@ -4,6 +4,39 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const socket = require('socket.io');
+const OktaJwtVerifier = require('@okta/jwt-verifier');
+
+const oktaJwtVerifier = new OktaJwtVerifier({
+  issuer: 'https://dev-357313.oktapreview.com/oauth2/default',
+  assertClaims: {
+    aud: 'api://default',
+  },
+});
+
+/**
+ * A simple middleware that asserts valid access tokens and sends 401 responses
+ * if the token is not present or fails validation.  If the token is valid its
+ * contents are attached to req.jwt
+ */
+function authenticationRequired(req, res, next) {
+  const authHeader = req.headers.authorization || '';
+  const match = authHeader.match(/Bearer (.+)/);
+
+  if (!match) {
+    return res.status(401).end();
+  }
+
+  const accessToken = match[1];
+
+  return oktaJwtVerifier.verifyAccessToken(accessToken)
+    .then((jwt) => {
+      req.jwt = jwt;
+      next();
+    })
+    .catch((err) => {
+      res.status(401).send(err.message);
+    });
+}
 
 const config = require('./config/db');
 
@@ -46,6 +79,15 @@ if (process.env.CORS) {
 app.use('/api/users', require('./routes/users'));
 app.use('/api/consum', require('./routes/consum'));
 app.use('/api/prod', require('./routes/prod'));
+
+/**
+ * An example route that requires a valid access token for authentication, it
+ * will echo the contents of the access token if the middleware successfully
+ * validated the token.
+ */
+app.get('/secure', authenticationRequired, (req, res) => {
+  res.json(req.jwt);
+});
 
 // Use express's default error handling middleware
 app.use((err, req, res, next) => {

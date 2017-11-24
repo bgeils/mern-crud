@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import { Route, Switch, BrowserRouter, HashRouter } from 'react-router-dom';
+
 import { Grid, Container } from 'semantic-ui-react';
 import { Security, ImplicitCallback } from '@okta/okta-react';
 
@@ -22,7 +23,7 @@ class App extends Component {
 
   render() {
     return (
-        <BrowserRouter>
+        <HashRouter>
         <Security issuer={config.issuer}
                   client_id={config.clientId}
                   redirect_uri={config.redirect_uri}>
@@ -49,7 +50,7 @@ class App extends Component {
              
           </div>
           </Security>
-        </BrowserRouter>
+        </HashRouter>
     );
   }
 }

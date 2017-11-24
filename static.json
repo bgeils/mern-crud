@@ -8,5 +8,5 @@
 	    "/api/": {
 	      "origin": "http://www.myopenenergy.com"
 	    }
-	  } 
+	  }
 }

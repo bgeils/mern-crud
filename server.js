@@ -88,6 +88,12 @@ app.use('/api/prod', require('./routes/prod'));
 app.get('/secure', authenticationRequired, (req, res) => {
   res.json(req.jwt);
 });
+
+// handle every other route with index.html, which will contain
+// a script tag to your application's JavaScript file(s).
+app.get('*', function (request, response){
+    response.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+});
  
 // Use express's default error handling middleware
 app.use((err, req, res, next) => {

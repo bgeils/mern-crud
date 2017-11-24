@@ -88,7 +88,7 @@ app.use('/api/prod', require('./routes/prod'));
 app.get('/secure', authenticationRequired, (req, res) => {
   res.json(req.jwt);
 });
-
+ 
 // Use express's default error handling middleware
 app.use((err, req, res, next) => {
   if (res.headersSent) return next(err);

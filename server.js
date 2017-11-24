@@ -44,7 +44,10 @@ const config = require('./config/db');
 mongoose.Promise = global.Promise;
 
 // Connect to the database
-mongoose.connect(config.db);
+mongoose.connect(config.db, {
+  useMongoClient: true,
+  /* other options */
+});
 let db = mongoose.connection;
 
 db.on('open', () => {

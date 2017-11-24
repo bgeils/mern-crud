@@ -89,9 +89,6 @@ app.get('/secure', authenticationRequired, (req, res) => {
   res.json(req.jwt);
 });
 
-app.get('/*', function(req, res){
-  res.sendFile(__dirname + '/index.html');
-});
 // Use express's default error handling middleware
 app.use((err, req, res, next) => {
   if (res.headersSent) return next(err);

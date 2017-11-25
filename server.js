@@ -82,6 +82,7 @@ if (process.env.CORS) {
 app.use('/api/users', require('./routes/users'));
 app.use('/api/consum', require('./routes/consum'));
 app.use('/api/prod', require('./routes/prod'));
+app.use('/api/orders', require('./routes/orders'));
 
 /**
  * An example route that requires a valid access token for authentication, it

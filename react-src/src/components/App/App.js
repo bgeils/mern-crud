@@ -5,9 +5,10 @@ import { Grid, Container } from 'semantic-ui-react';
 import { Security, ImplicitCallback } from '@okta/okta-react';
 
 import Navigation from '../Navigation/Navigation';
-//import Test from '../Test/Test';
+import Test from '../Test/Test';
 import About from '../About/About';
 import Dashboard from '../Dashboard/Dashboard';
+import Market from '../Market/Market';
 import LoginPage from '../LoginPage/LoginPage';
 
 import './App.css';
@@ -35,6 +36,8 @@ class App extends Component {
                   <Switch>
                     <Route exact path="/" component={Dashboard}/>
                     <Route path="/about" component={ About }/>
+                    <Route path="/market" component={ Market }/>
+                    <Route path="/test" component={ Test }/>
                     <Route path='/login' render={() => <LoginPage baseUrl={config.baseUrl} />} />
                     <Route path='/implicit/callback' component={ImplicitCallback} />
                   </Switch>

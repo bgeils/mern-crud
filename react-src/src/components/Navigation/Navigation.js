@@ -81,16 +81,6 @@ export default withAuth(class Navigation extends Component {
               About
             </Menu.Item>
 
-            <Menu.Item
-            name='market'
-            as={Link}
-            to='/market'
-            active={activeItem === 'market'}
-            onClick={this.handleItemClick}
-            >
-              Market
-            </Menu.Item>
-
             { LogInOut }
 
           </Menu>

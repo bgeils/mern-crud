@@ -83,6 +83,7 @@ app.use('/api/users', require('./routes/users'));
 app.use('/api/consum', require('./routes/consum'));
 app.use('/api/prod', require('./routes/prod'));
 app.use('/api/orders', require('./routes/orders'));
+app.use('/api/user', require('./routes/user'));
 
 /**
  * An example route that requires a valid access token for authentication, it
@@ -91,6 +92,13 @@ app.use('/api/orders', require('./routes/orders'));
  */
 app.get('/secure', authenticationRequired, (req, res) => {
   res.json(req.jwt);
+});
+
+// THIS IS A SAMPLE 
+app.get('/api/messages', authenticationRequired, (req, res) => {
+  res.json([{
+    message: 'Hello, word!'
+  }]);
 });
 
 // handle every other route with index.html, which will contain

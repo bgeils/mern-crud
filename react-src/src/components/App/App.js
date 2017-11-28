@@ -10,6 +10,7 @@ import About from '../About/About';
 import Dashboard from '../Dashboard/Dashboard';
 import Market from '../Market/Market';
 import LoginPage from '../LoginPage/LoginPage';
+import Settings from '../Settings/Settings';
 
 import './App.css';
 
@@ -38,6 +39,7 @@ class App extends Component {
                     <Route path="/about" component={ About }/>
                     <Route path="/market" component={ Market }/>
                     <Route path="/test" component={ Test }/>
+                    <Route path="/settings" component={ Settings }/>
                     <Route path='/login' render={() => <LoginPage baseUrl={config.baseUrl} />} />
                     <Route path='/implicit/callback' component={ImplicitCallback} />
                   </Switch>

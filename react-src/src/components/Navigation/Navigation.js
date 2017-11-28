@@ -4,6 +4,8 @@ import { Grid, Menu, Segment, Icon } from 'semantic-ui-react';
 import { withAuth } from '@okta/okta-react';
 import AlertContainer from 'react-alert';
 
+import './Navigation.css';
+
 export default withAuth(class Navigation extends Component {
   
   constructor(props) {
@@ -35,9 +37,6 @@ export default withAuth(class Navigation extends Component {
     this.msg.success('Successfully logged out.')
   }
 
-  
-
-
   render() {
     let alertOptions = {
       offset: 14,
@@ -48,9 +47,20 @@ export default withAuth(class Navigation extends Component {
     }
     const { activeItem } = this.state
 
-    const LogInOut = this.state.authenticated ?
-      <Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.logOutUser} position={'right'} > Logout </Menu.Item> :
-      <Menu.Item name='login' as={Link} to='/login' active={activeItem === 'login'} onClick={this.handleItemClick} position={'right'}>Login</Menu.Item>;
+    const LoggedOut = () => (
+      <Menu.Menu position='right'>
+        <Menu.Item name='settings' as={Link} to='/settings' active={activeItem === 'settings'} > Settings </Menu.Item>
+        <Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.logOutUser} > Logout </Menu.Item>
+      </Menu.Menu>
+    )
+
+    const LoggedIn = () => (
+      <Menu.Menu position='right'>
+        <Menu.Item name='login' as={Link} to='/login' active={activeItem === 'login'} onClick={this.handleItemClick} >Login</Menu.Item>
+      </Menu.Menu>
+    )
+
+    const LogInOut = this.state.authenticated ? <LoggedOut/> : <LoggedIn/>;
 
     const Header = () => (
       <Grid>
@@ -79,8 +89,8 @@ export default withAuth(class Navigation extends Component {
             onClick={this.handleItemClick}
             >
               About
-            </Menu.Item>
-
+            </Menu.Item>            
+            
             { LogInOut }
 
           </Menu>

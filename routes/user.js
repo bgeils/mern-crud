@@ -37,7 +37,7 @@ function authenticationRequired(req, res, next) {
     });
 }
 
-router.get('/', authenticationRequired,(req, res) => {
+router.get('/',(req, res) => {
   
   Users.findOne({"uid": req.jwt.claims.uid})
     .then((result) => {

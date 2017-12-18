@@ -71,7 +71,7 @@ class Dashboard extends Component {
         );
     
     if(avg.length !== 0){
-      let ret = Math.round(avg[0].average *10)/10
+      let ret = Math.round(avg[1].average *10)/10
       this.loadInterval && this.setState({ avg_energy: ret });
     }
   }
@@ -79,7 +79,7 @@ class Dashboard extends Component {
 
   // Fetch data from the back-end every 3 seconds
   fetchConsumeData() {
-    //console.log("polling");
+    
     axios.get(`${this.server}/api/consum`)
     .then((response) => {
       for(var i=0; i<response.data.length;i++){

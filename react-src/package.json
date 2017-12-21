@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@okta/okta-react": "0.0.7",
+    "@okta/okta-react": "0.0.10",
     "@okta/okta-signin-widget": "^2.4.0",
     "autoprefixer": "^7.1.1",
     "axios": "^0.16.2",

@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "CORS=1 nodemon server.js"
+    "dev": "CORS=1 nodemon server.js",
+    "dev-windows": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,8 @@
     "mongoose": "^4.13.5",
     "mongoose-unique-validator": "1.0.5",
     "mongoose-validator": "1.3.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "semantic-ui-react": "^0.76.0",
     "socket.io": "2.0.3",
     "string-capitalize-name": "1.0.3"

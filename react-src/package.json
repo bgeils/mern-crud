@@ -44,6 +44,7 @@
     "react-dev-utils": "^3.0.2",
     "react-dom": "^15.6.1",
     "react-error-overlay": "^1.0.9",
+    "react-map-gl": "^3.2.1",
     "react-router-dom": "^4.2.2",
     "react-stripe-elements": "^1.2.1",
     "react-tooltip": "^3.4.0",

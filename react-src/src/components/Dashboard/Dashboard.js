@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Button, Segment } from 'semantic-ui-react';
+import { Button, Segment, Container } from 'semantic-ui-react';
 
 import EnergyAreaChart from '../EnergyAreaChart/EnergyAreaChart';
 import HomeCards from '../HomeCards/HomeCards';
@@ -184,7 +184,7 @@ class Dashboard extends Component {
     }
 
     return (
-      <div>
+      <Container>
         <ButtonToggle/>
         <Segment vertical>
           <h1 >{this.state.isProduction ? 'Production' : 'Consumption'} Dashboard</h1>
@@ -198,7 +198,7 @@ class Dashboard extends Component {
 
           { EnergyPlaceholder }
         
-      </div>
+      </Container>
     );
   }
 }

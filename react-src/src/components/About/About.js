@@ -46,7 +46,7 @@ class About extends Component {
 
   render() {
     return (
-        <div>
+        <Container>
 
         <Container text style={{ marginTop: '2em' }}>
           <Header as='h1'>Open Energy Explained</Header>
@@ -83,7 +83,7 @@ class About extends Component {
           <Route extact path="/about" component={General} {...this.state} />
         </Switch>
 
-      </div>
+      </Container>
     );
   }
 }

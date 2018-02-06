@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import OktaSignInWidget from './OktaSignInWidget';
 import { withAuth } from '@okta/okta-react';
+import { Container } from 'semantic-ui-react';
+
 
 export default withAuth(class LoginPage extends Component {
 	
@@ -41,9 +43,11 @@ export default withAuth(class LoginPage extends Component {
     if (this.state.authenticated === null) return null;
     return this.state.authenticated ?
       <Redirect to={{ pathname: '/' }}/> :
+      <Container>
       <OktaSignInWidget
         baseUrl={this.props.baseUrl}
         onSuccess={this.onSuccess}
-        onError={this.onError}/>;
+        onError={this.onError}/>
+        </Container>;
   }
 });

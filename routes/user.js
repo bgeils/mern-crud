@@ -48,4 +48,14 @@ router.get('/',(req, res) => {
     });
 });
 
+router.get('/all', (req, res) => {
+  Users.find({})
+    .then((result) => {
+      res.json(result)
+    })
+    .catch((err) => {
+      res.status(500).json({ success: false, msg: `Something went wrong. ${err}` });
+    });
+})
+
 module.exports = router;

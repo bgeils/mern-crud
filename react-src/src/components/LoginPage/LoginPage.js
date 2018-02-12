@@ -43,7 +43,7 @@ export default withAuth(class LoginPage extends Component {
     if (this.state.authenticated === null) return null;
     return this.state.authenticated ?
       <Redirect to={{ pathname: '/' }}/> :
-      <Container>
+      <Container textAlign={'center'}>
       <OktaSignInWidget
         baseUrl={this.props.baseUrl}
         onSuccess={this.onSuccess}

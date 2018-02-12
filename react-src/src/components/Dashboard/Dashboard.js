@@ -184,6 +184,7 @@ class Dashboard extends Component {
     }
 
     return (
+      <div className='pad-it'>
       <Container>
         <ButtonToggle/>
         <Segment vertical>
@@ -199,6 +200,7 @@ class Dashboard extends Component {
           { EnergyPlaceholder }
         
       </Container>
+      </div>
     );
   }
 }

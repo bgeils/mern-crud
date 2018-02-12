@@ -19,8 +19,18 @@ export default withAuth(class Navigation extends Component {
 
   async checkAuthentication() {
     const authenticated = await this.props.auth.isAuthenticated();
+
     if (authenticated !== this.state.authenticated) {
       this.setState({ authenticated });
+      let this_ = this;
+      this.props.auth.getUser().then(function(value) {
+        if(value === undefined){
+          this_.props.saveUser(null);
+        }else{
+          this_.props.saveUser(value);
+        }
+        
+      });
     }
   }
 
@@ -62,13 +72,32 @@ export default withAuth(class Navigation extends Component {
 
     const LogInOut = this.state.authenticated ? <LoggedOut/> : <LoggedIn/>;
 
+    const MapView = this.state.authenticated ? <Menu.Item
+            name='map'
+            as={Link}
+            to='/map'
+            active={activeItem === 'map'}
+            onClick={this.handleItemClick}
+            >
+              Map
+            </Menu.Item> : "" ;
+
+    const UsersMenu = this.state.authenticated ? <Menu.Item
+            name='users'
+            as={Link}
+            to='/users'
+            active={activeItem === 'users'}
+            onClick={this.handleItemClick}
+            >
+              Users
+            </Menu.Item> : "" ;
+
     const Header = () => (
       <Grid>
         <Grid.Column only='tablet computer'>
-        <Segment inverted>
+        <Segment inverted className="energy-menu">
           <Menu inverted>
             <Menu.Item header>
-              
               <h2><Icon inverted name='lightning' className="bolt-icon" />Open Energy</h2>
             </Menu.Item>
             <Menu.Item
@@ -90,7 +119,9 @@ export default withAuth(class Navigation extends Component {
             >
               About
             </Menu.Item>            
-            
+            { MapView }
+            { UsersMenu }
+
             { LogInOut }
 
           </Menu>

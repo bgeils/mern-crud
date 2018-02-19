@@ -3,5 +3,5 @@
 
 module.exports = {
   db: process.env.OPENENERGYPRODUCTIONDB // Production
-  //db: 'mongodb://localhost/mern-crud' // Local
+  // db: 'mongodb://localhost/mern-crud' // Local
 };

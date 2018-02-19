@@ -8,6 +8,7 @@ import About from '../About/About';
 import Dashboard from '../Dashboard/Dashboard';
 import Market from '../Market/Market';
 import LoginPage from '../LoginPage/LoginPage';
+import CreateUser from '../CreateUser/CreateUser';
 import Settings from '../Settings/Settings';
 import MapPlot from '../MapPlot/MapPlot';
 import Users from '../Users/Users';
@@ -25,7 +26,7 @@ class App extends Component {
 
   constructor() {
     super();
-    
+
     this.state = {
       user: null
     }
@@ -56,11 +57,12 @@ class App extends Component {
                     <Route path="/map" component={ MapPlot }/>
                     <Route path="/users" component={ Users }/>
                     <Route path='/login' render={() => <LoginPage baseUrl={config.baseUrl} />} />
+                    <Route path='/createUser' render={() => <CreateUser baseUrl={config.baseUrl} />} />
                     <Route path='/implicit/callback' component={ImplicitCallback} />
                   </Switch>
 
             </div>
-             
+
           </div>
           </Security>
         </BrowserRouter>

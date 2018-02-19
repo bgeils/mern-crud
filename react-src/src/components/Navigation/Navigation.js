@@ -7,7 +7,7 @@ import AlertContainer from 'react-alert';
 import './Navigation.css';
 
 export default withAuth(class Navigation extends Component {
-  
+
   constructor(props) {
     super(props);
     this.state = { authenticated: null };
@@ -29,7 +29,7 @@ export default withAuth(class Navigation extends Component {
         }else{
           this_.props.saveUser(value);
         }
-        
+
       });
     }
   }
@@ -66,6 +66,7 @@ export default withAuth(class Navigation extends Component {
 
     const LoggedIn = () => (
       <Menu.Menu position='right'>
+        <Menu.Item name='newUser' as={Link} to='/createUser' active={activeItem === 'createUser'} onClick={this.handleItemClick} >Create New User</Menu.Item>
         <Menu.Item name='login' as={Link} to='/login' active={activeItem === 'login'} onClick={this.handleItemClick} >Login</Menu.Item>
       </Menu.Menu>
     )
@@ -118,7 +119,7 @@ export default withAuth(class Navigation extends Component {
             onClick={this.handleItemClick}
             >
               About
-            </Menu.Item>            
+            </Menu.Item>
             { MapView }
             { UsersMenu }
 
@@ -137,4 +138,3 @@ export default withAuth(class Navigation extends Component {
     );
   }
 });
-

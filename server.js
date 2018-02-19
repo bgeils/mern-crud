@@ -94,7 +94,7 @@ app.get('/secure', (req, res) => {
   res.json(req.jwt);
 });
 
-// THIS IS A SAMPLE 
+// THIS IS A SAMPLE
 app.get('/api/messages', (req, res) => {
   res.json([{
     message: 'Hello, word!'
@@ -106,13 +106,13 @@ app.get('/api/messages', (req, res) => {
 app.get('*', function (request, response){
     response.sendFile(path.resolve(__dirname, 'public', 'index.html'));
 });
- 
+
 // Use express's default error handling middleware
 app.use((err, req, res, next) => {
   if (res.headersSent) return next(err);
   res.status(400).json({ err: err });
 });
-  
+
 // Start the server
 const port = process.env.PORT || 3000;
 
